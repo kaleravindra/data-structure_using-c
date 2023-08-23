@@ -1,0 +1,66 @@
+#include<stdio.h>
+
+void  printarray(int arr[])
+{
+
+    for(int i=0; i<=6-1; i++)
+    {
+
+        printf("\n%d\n",arr[i]);
+    }
+
+
+}
+
+void  selectionsort(int arr[])
+{
+  int temp=0;
+  int idm;
+    for(int i=0; i<6; i++)
+    {
+        idm=i;
+
+        for(int j=i+1; j<6; j++)
+        {
+
+
+            if(arr[j]>arr[idm])
+            {
+
+                idm=j;
+
+            }
+
+
+
+
+        }
+         temp=arr[i];
+        arr[i]=arr[idm];
+        arr[idm]=temp;
+
+    }
+
+
+}
+
+main()
+{
+
+
+
+    int arr[6]= {67,54,98,23,34,90,64};
+
+    printarray(arr);
+
+
+
+
+    printf("aaray after sorting ");
+
+    selectionsort(arr);
+
+      printarray(arr);
+
+
+}

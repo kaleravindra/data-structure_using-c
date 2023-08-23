@@ -1,0 +1,132 @@
+#include<stdio.h>
+
+
+int arr[8];
+int f=-1;
+int b=-1;
+
+int isempty()
+{
+    if(f==-1|| f> b)
+    {
+
+        return 1;
+    }
+    else
+    {
+
+        return 0;
+    }
+
+}
+void eq(int n)
+{
+    int data;
+    if(b==7)
+    {
+        printf("queue is full\n");
+    }
+    else
+    {
+
+        if(f==-1)
+        {
+
+            f++;
+        }
+
+        b++;
+        arr[b]=n;
+
+        //printf("%d=%d\n",b,arr[b]);
+    }
+
+
+}
+int dq()
+{
+
+    if(isempty())
+    {
+
+        printf("undeerflow");
+    }
+    else
+    {
+        //printf("%d=%d\n",f,arr[f]);
+        f++;
+        return f;
+
+    }
+
+
+
+}
+
+void diq()
+{
+
+    while(f<=7)
+    {
+
+        printf("\n%d=%d\n",f,arr[f]);
+        f++;
+    }
+}
+
+
+main()
+{
+
+
+    printf("queue remove\n");
+//dq();
+//dq();
+//dq();
+//dq();
+//dq();
+
+
+    //bsf implentiton
+
+
+    printf("\nbsf implention\n");
+    int u;
+    int i=0;
+    int visited[7]={0,0,0,0,0,0,0};
+
+    int a[7][7]={
+    {0,1,1,1,0,0,0},
+    {1,0,1,0,0,0,0},
+    {1,1,0,1,1,0,0},
+    {1,0,1,0,1,0,0},
+    {0,0,1,1,0,1,1},
+    {0,0,0,0,1,0,0},
+    {0,0,0,0,1,0,0},
+
+
+};
+
+printf("%d\n",i);
+
+visited[i]=1;
+
+eq(i);
+
+while(!isempty())
+{
+    u=dq();
+    for(int j=0;j<7;j++)
+    {
+        if(a[u][j]==1&&visited[j]==0)
+        {
+            printf("%d\n",j);
+            visited[j]=1;
+            eq(j);
+
+        }
+
+    }
+
+}
+}

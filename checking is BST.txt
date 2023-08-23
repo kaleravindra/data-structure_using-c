@@ -1,0 +1,80 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+
+    int data;
+
+    struct Node *left;
+    struct Node *right;
+};
+
+int isBST(struct Node *root)
+{
+  static  struct Node *prev=NULL;
+
+    if(root!=NULL)
+    {
+        if(!isBST(root->left))
+        {
+
+            return 0;
+        }
+        if(prev!=NULL &&root->data<= prev->data)
+        {
+
+            return 0;
+        }
+        prev=root;
+        return isBST(root->right);
+
+
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+struct Node*createnode(int val)
+{
+    struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
+
+
+
+      ptr->data=val;
+      ptr->left=NULL;
+      ptr->right=NULL;
+      return ptr;
+
+
+
+
+};
+
+main()
+{
+
+    struct Node *root= createnode(11);
+    struct Node *root1= createnode(9);
+    struct Node *root2= createnode(15);
+    struct Node *root3= createnode(4);
+    struct Node *root4= createnode(10);
+    struct Node *root5= createnode(13);
+    struct Node *root6= createnode(19);
+
+    root->left=root1;
+    root->right=root2;
+
+    root1->left=root3;
+    root1->right=root4;
+
+    root2->left=root5;
+    root2->right=root6;
+
+    int x=isBST(root);
+    printf("%d",x);
+
+
+}

@@ -1,0 +1,98 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+
+    int data;
+
+    struct Node *next;
+
+};
+
+struct Node *f;
+struct Node *r;
+
+
+void printlist(struct Node *top)
+{
+    struct Node *ptr=top;
+
+    while(ptr!=NULL)
+    {
+
+        printf("\n%d\n",ptr->data);
+        ptr=ptr->next;
+    }
+
+}
+
+void enququ(int value)
+{
+
+    struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
+    if(ptr==NULL)
+    {
+
+        printf("queue is the full");
+    }
+    else
+
+        ptr->data=value;
+    ptr->next=NULL;
+    if(f==NULL)
+    {
+
+        f=r=ptr;
+    }
+    else
+    {
+
+        r->next=ptr;
+        r=ptr;
+
+    }
+}
+
+void deququ()
+{
+
+    struct Node *ptr=f;
+    int value=-1;
+
+    if(f==NULL)
+    {
+
+        printf("queue is the empty");
+    }
+    else
+    {
+
+        f=f->next;
+        value=ptr->data;
+        free(ptr);
+
+
+    }
+}
+
+main()
+{
+
+
+    printlist(f);
+    enququ(67);
+    enququ(267);
+    enququ(367);
+    enququ(467);
+    enququ(567);
+    printlist(f);
+    deququ();
+
+    printlist(f);
+
+
+}
+
+
+

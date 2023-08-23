@@ -1,0 +1,98 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+
+int data;
+
+struct Node *next;
+
+};
+
+void printg(struct Node *ptr)
+{
+
+    while(ptr!=NULL)
+    {
+        printf("%d->",ptr->data);
+        ptr=ptr->next;
+
+    }
+    printf("NULL");
+}
+
+ struct Node * addfirst(struct Node *head,int data  )
+{
+  struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
+   ptr->data=data;
+    ptr->next=head;
+    head=ptr;
+    return ptr;
+}
+ struct Node * add(struct Node *head,int data,int index)
+
+{
+    struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
+    struct Node *p=head;
+    int i=0;
+    while(i!=index-1)
+    {
+
+        p=p->next;
+        i++;
+    }
+    ptr->data=data;
+    ptr->next=p->next;
+    p->next=ptr;
+    return head;
+};
+
+struct Node* addlast(struct Node *head,int data)
+{
+    struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
+    struct Node *p=head;
+
+    while(p->next!=NULL)
+    {
+
+        p=p->next;
+    }
+    ptr->data=data;
+    ptr->next=NULL;
+    p->next=ptr;
+    return head;
+};
+main()
+{
+
+struct Node *head;
+struct Node *s;
+struct Node *t;
+struct Node *ptr;
+
+head=(struct Node*)malloc(sizeof(struct Node));
+s=(struct Node*)malloc(sizeof(struct Node));
+t=(struct Node*)malloc(sizeof(struct Node));
+
+head->data=10;
+head->next=s;
+s->data=89;
+s->next=t;
+t->data=34;
+t->next=NULL;
+printg(head);
+
+head=addfirst(head,67);
+printg(head);
+
+head=add(head,44,1);
+
+printg(head);
+
+head=addlast(head,23);
+printg(head);
+
+
+
+}
+
