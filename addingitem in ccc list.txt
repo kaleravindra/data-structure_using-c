@@ -1,0 +1,86 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+
+    int data;
+
+    struct Node *next;
+};
+void printkl(struct Node *head)
+{
+
+    struct Node *p1=head;
+
+    do{
+        printf("%d->",p1->data);
+        p1=p1->next;
+
+    }while(p1!=head);
+    printf("NULL\n");
+}
+
+struct Node*insertionatfirst(struct Node*head,int item)
+{
+    struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
+
+struct Node*p=head->next;
+
+ptr->data=item;
+
+while(p->next!=head)
+{
+
+    p=p->next;
+}
+p->next=ptr;
+ptr->next=head;
+
+head=ptr;
+
+
+    return head;
+
+};
+main()
+{
+    struct Node *head;
+    struct Node *n2;
+    struct Node *n3;
+    struct Node *n4;
+    struct Node *n5;
+
+
+    head=(struct Node*)malloc(sizeof(struct Node));
+
+       n2=(struct Node*)malloc(sizeof(struct Node));
+       n3=(struct Node*)malloc(sizeof(struct Node));
+       n4=(struct Node*)malloc(sizeof(struct Node));
+       n5=(struct Node*)malloc(sizeof(struct Node));
+
+       head->data=87;
+       head->next=n2;
+
+       n2->data=90;
+       n2->next=n3;
+
+       n3->data=34;
+       n3->next=n4;
+
+       n4->data=15;
+       n4->next=n5;
+
+       n5->data=23;
+       n5->next=head;
+
+
+    printkl(head);
+
+ head=insertionatfirst(head,980);
+
+ printkl(head);
+
+
+
+}
